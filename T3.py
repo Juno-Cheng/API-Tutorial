@@ -63,8 +63,7 @@ while True:
     print("2. Check Tasks in Projects - Input ID\n")
     print("3. Add a Task to Current Project\n")
     print("4. Delete a Task\n")
-    print("5. Clear All\n")
-    print("6. Exit\n")
+    print("5. Exit\n")
     command = input().strip()
 
     if (command == "1"):
@@ -90,19 +89,19 @@ while True:
         print("Enter task name\n")
         name = input()
         add_tasks(id,name)
+
+
     elif (command == "4"):
         check_projects()
     elif (command == "5"):
-        check_projects()
-    elif (command == "6"):
         exit()
 
     time.sleep(1)
     print("============================")
-    print("Enter 7 to see Option Again:")
+    print("Enter 6 to see Option Again:")
     while True:
         command = input().strip()
-        if command == "7":
+        if command == "6":
             break
 
 
