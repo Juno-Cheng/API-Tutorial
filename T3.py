@@ -42,7 +42,7 @@ def check_tasks(id): #https://developer.todoist.com/rest/v1/?shell#get-active-ta
 
     for tasks in response.json():
          if tasks['project_id'] == id:
-            print(f"Task: {tasks['content']} | ID: {tasks['project_id']}\n")
+            print(f"Task: {tasks['content']} | ID: {tasks['id']}\n")
 
 def add_tasks(project_id, task_name):
     url = url_tasks
@@ -54,6 +54,17 @@ def add_tasks(project_id, task_name):
         exit()
     print(f"Added Task ({task_name}) to Project {project_id}\n")
 
+def del_tasks(taskid):
+    url = url_tasks
+    header = {'Authorization':headerBearer}
+    url = url + f"/{taskid}"
+    print(url)
+    response = requests.delete(url, headers=header)
+    print(response.status_code)
+    if response.status_code != 204:
+        print("Uh Oh\n")
+        exit()
+    print(f"Deleted Task\n")
 #=================================================
 
 while True:
@@ -92,7 +103,11 @@ while True:
 
 
     elif (command == "4"):
-        check_projects()
+        print("====")
+        id = input()
+        print("====")
+        del_tasks(id)
+
     elif (command == "5"):
         exit()
 
