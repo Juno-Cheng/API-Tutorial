@@ -5,13 +5,14 @@ import requests#Used for HTTP request
 import os
 import dotenv
 import time
+dotenv.load_dotenv()
 
-token = ""
-
+token = os.getenv("API_BEARER_KEY_TODOIST")
 headers = {
     "Authorization": f"Bearer {token}",
     "Content-Type": "application/json",
 }
+
 
 response = requests.get("https://api.todoist.com/rest/v2/projects", headers=headers)
 
